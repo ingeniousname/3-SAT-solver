@@ -2,10 +2,20 @@
 //
 
 #include <iostream>
+#include "input.hpp"
+#include "output.hpp"
+#include "solver.hpp"
+
+
 using namespace std;
 
 int main()
 {
-	std::cout << "Hello CMake." << std::endl;
+	auto input = Input3SAT::readFromFile("input/sample.txt");
+	Solver solver;
+	auto output = solver.solve(input);
+	printOutput(output);
+
+	getchar();
 	return 0;
 }
