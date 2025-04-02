@@ -36,7 +36,7 @@ Input3SAT Input3SAT::readFromFile(const char* filename)
 			}
 		}
 
-		input.clauses.push_back(std::make_tuple(Variable{idx[0], neg[0]}, Variable{idx[0], neg[1]}, Variable{idx[2], neg[2]}));
+		input.clauses.push_back({ Variable{idx[0], neg[0]}, Variable{idx[0], neg[1]}, Variable{idx[2], neg[2]} });
 	}
 
 	ifs.close();

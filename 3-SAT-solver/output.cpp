@@ -8,7 +8,7 @@ void printOutput(const Output3SAT& output)
 		std::cout << "Clauses can be satisfied:\n";
 		for (int i = 0; i < output.valuation.size(); i++)
 		{
-			std::cout << i << " - " << (output.valuation[i] ? "true" : "false") << "\n";
+			std::cout << i << " - " << (output.valuation[i] == VarState::Unassigned ? "any" : output.valuation[i] == VarState::True ? "true" : "false") << "\n";
 		}
 
 	}
