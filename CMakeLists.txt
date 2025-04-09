@@ -10,30 +10,15 @@ if (POLICY CMP0141)
 endif()
 
 project ("3-SAT-solver")
-
 # Include sub-projects.
 add_subdirectory ("3-SAT-solver")
-
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-)
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-
 enable_testing()
+add_subdirectory ("test")
 
-add_executable(
-  SATtest
-  test/3SATtest.cc
-)
+add_executable(main 3-SAT-solver.cpp)
+target_link_libraries(main 3-SAT-solver)
 
-target_link_libraries(
-  SATtest
-  GTest::gtest_main
-  "3-SAT-solver"
+add_custom_command(TARGET main POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/input $<TARGET_FILE_DIR:main>/input
 )
-include(GoogleTest)
-gtest_discover_tests(SATtest)

@@ -1,17 +1,38 @@
 #include <gtest/gtest.h>
-#include "3-SAT-solver/solver.hpp"
+#include "solver.hpp"
 
-TEST(SATtest, BasicAssertions) {
+TEST(SATtest, Base3VarTrue) {
 	Input3SAT input;
 	input.clauses = {
-	{1, 2, 3},
-	{-1, -2, -3},
-	{1, -2, 3},
-	{-1, 2, -3}
+		{ { { 0, true }, { 1, true }, { 2, true } } },
+		{ { { 0, false }, { 1, false }, { 2, false } } },
+		{ { { 0, false }, { 1, false }, { 2, true } } },
+		{ { { 0, false }, { 1, true }, { 2, false } } },
+		{ { { 0, true }, { 1, false }, { 2, false } } },
+		{ { { 0, false }, { 1, true }, { 2, true } } },
+		{ { { 0, true }, { 1, false }, { 2, true } } },
 	};
-	std::vector<VarState> assignment = { UNASSIGNED, UNASSIGNED, UNASSIGNED };
-	EXPECT_EQ(Solver::solveAUX(input, assignment, 0), true);
-	EXPECT_EQ(assignment[0], TRUE);
-	EXPECT_EQ(assignment[1], FALSE);
-	EXPECT_EQ(assignment[2], TRUE);
+	std::vector<VarState> assignment = { VarState::Unassigned, VarState::Unassigned, VarState::Unassigned };
+	EXPECT_TRUE(Solver::solveAUX(input, assignment, 0));
+	EXPECT_EQ(assignment[0], VarState::False);
+	EXPECT_EQ(assignment[1], VarState::False);
+	EXPECT_EQ(assignment[2], VarState::True);
 }
+
+TEST(SATtest, Base3VarFalse) {
+	Input3SAT input;
+	input.clauses = {
+		{ { { 0, false }, { 1, false }, { 2, false } } },
+		{ { { 0, false }, { 1, false }, { 2, true } } },
+		{ { { 0, false }, { 1, true }, { 2, false } } },
+		{ { { 0, true }, { 1, false }, { 2, false } } },
+		{ { { 0, false }, { 1, true }, { 2, true } } },
+		{ { { 0, true }, { 1, false }, { 2, true } } },
+		{ { { 0, true }, { 1, true }, { 2, false } } },
+		{ { { 0, true }, { 1, true }, { 2, true } } },
+
+	};
+	std::vector<VarState> assignment = { VarState::Unassigned, VarState::Unassigned, VarState::Unassigned };
+	EXPECT_FALSE(Solver::solveAUX(input, assignment, 0));
+}
+

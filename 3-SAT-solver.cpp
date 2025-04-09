@@ -2,9 +2,9 @@
 //
 
 #include <iostream>
-#include "input.hpp"
-#include "output.hpp"
-#include "solver.hpp"
+#include "3-SAT-solver/input.hpp"
+#include "3-SAT-solver/solver.hpp"
+#include "3-SAT-solver/output.hpp"
 
 
 using namespace std;
