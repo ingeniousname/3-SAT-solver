@@ -9,12 +9,17 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
-	auto input = Input3SAT::readFromFile("input/sample.txt");
+	std::string inputFile = "input/sample.txt";
+	if (argc == 2)
+		inputFile = std::string(argv[1]);
+
+	auto input = Input3SAT::readFromFile(inputFile.c_str());
 	Solver solver;
 	auto output = solver.solve(input);
 	printOutput(output);
+	writeOutputToFile(output, inputFile);
 
 	getchar();
 	return 0;

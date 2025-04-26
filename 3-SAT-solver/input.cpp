@@ -9,6 +9,7 @@ Input3SAT Input3SAT::readFromFile(const char* filename)
 	if (!ifs.good())
 	{
 		std::cout << "Cannot open file " << filename << "!";
+		getchar();
 		exit(1);
 	}
 
