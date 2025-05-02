@@ -13,15 +13,16 @@ Wersja linuksowa:
 ```
 Wersja windowsowa
 ```
-  cmake .. && cmake --build
+  cmake ..
+  cmake --build
 ```
 
-Urochomić program wynywalny
+Uruchomienie programu wykonywalnego
 ```
   ./main <plik>
 ```
 
-lub testy
+lub testów
 ```
   ./SATtest
 ```
