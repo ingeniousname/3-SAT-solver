@@ -3,6 +3,9 @@
 
 TEST(SATtest, Base3VarTrue) {
 	Input3SAT input;
+
+	// IMPORTANT
+	// here true means negation, ~x0 and so on
 	input.clauses = {
 		{ { { 0, true }, { 1, true }, { 2, true } } },
 		{ { { 0, false }, { 1, false }, { 2, false } } },
@@ -14,9 +17,9 @@ TEST(SATtest, Base3VarTrue) {
 	};
 	std::vector<VarState> assignment = { VarState::Unassigned, VarState::Unassigned, VarState::Unassigned };
 	EXPECT_TRUE(Solver::solveAUX(input, assignment, 0));
-	EXPECT_EQ(assignment[0], VarState::False);
-	EXPECT_EQ(assignment[1], VarState::False);
-	EXPECT_EQ(assignment[2], VarState::True);
+	EXPECT_EQ(assignment[0], VarState::True);
+	EXPECT_EQ(assignment[1], VarState::True);
+	EXPECT_EQ(assignment[2], VarState::False);
 }
 
 TEST(SATtest, Base3VarFalse) {
