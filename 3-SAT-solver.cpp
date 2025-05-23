@@ -20,7 +20,5 @@ int main(int argc, char* argv[])
 	auto output = solver.solve(input);
 	printOutput(output);
 	writeOutputToFile(output, inputFile);
-
-	getchar();
 	return 0;
 }
