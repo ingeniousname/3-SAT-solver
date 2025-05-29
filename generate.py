@@ -1,8 +1,8 @@
 # This script generates a random SAT problem in CNF format.
 
 #5 2
-#0 !1 2
-#2 3 !4
+#1 !2 3
+#3 4 !5
 
 def generate_cnf(num_vars, num_clauses):
     import random
@@ -11,7 +11,7 @@ def generate_cnf(num_vars, num_clauses):
     for _ in range(num_clauses):
         clause = set()
         while len(clause) < 3:  # Each clause should have exactly 3 literals
-            var = str(random.randint(0, num_vars - 1))
+            var = str(random.randint(1, num_vars))
             if random.choice([True, False]):
                 var = "!" + var  # Negate the variable with a 50% chance
             clause.add(var)

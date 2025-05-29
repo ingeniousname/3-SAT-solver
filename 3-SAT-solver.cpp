@@ -5,6 +5,7 @@
 #include "3-SAT-solver/input.hpp"
 #include "3-SAT-solver/solver.hpp"
 #include "3-SAT-solver/output.hpp"
+#include "3-SAT-solver/verifier.hpp"
 
 
 using namespace std;
@@ -20,5 +21,6 @@ int main(int argc, char* argv[])
 	auto output = solver.solve(input);
 	printOutput(output);
 	writeOutputToFile(output, inputFile);
+	getchar();
 	return 0;
 }
